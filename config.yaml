@@ -1,0 +1,4 @@
+{'project_name' : 'my_lifted_vcf',
+          'target_vcf_path' : 'my_vcf.vcf.gz',
+          'old_build' : 'hg19',
+          'new_build' : 'hg38'}
