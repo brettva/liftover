@@ -5,8 +5,8 @@ chroms = ['chr' + i for i in chroms]
 
 rule all:
     input:
-        vcf=f"output/{config['project_name']}.{config['new_build']}.all_chrs.vcf.gz",
-        index=f"output/{config['project_name']}.{config['new_build']}.all_chrs.vcf.gz.csi"
+        vcf=f"output/{config['project_name']}.{config['new_build']}.vcf.gz",
+        index=f"output/{config['project_name']}.{config['new_build']}.vcf.gz.csi"
 
 rule rename_chr:
     input: config['target_vcf_path']
@@ -135,6 +135,26 @@ rule index_concat:
     input: f"output/{config['project_name']}.{config['new_build']}.all_chrs.vcf.gz"
 
     output: f"output/{config['project_name']}.{config['new_build']}.all_chrs.vcf.gz.csi"
+
+    shell:
+        """
+        bcftools index {input}
+        """
+
+rule update_ids:
+    input: f"output/{config['project_name']}.{config['new_build']}.all_chrs.vcf.gz"
+
+    output: f"output/{config['project_name']}.{config['new_build']}.vcf.gz"
+
+    shell:
+        """
+        bcftools annotate -x ID -I +'%CHROM:%POS:%REF:%ALT' {input} -Oz > {output}
+        """
+
+rule index_update_ids:
+    input: f"output/{config['project_name']}.{config['new_build']}.vcf.gz"
+
+    output: f"output/{config['project_name']}.{config['new_build']}.vcf.gz.csi"
 
     shell:
         """

@@ -1,4 +1,4 @@
-{'project_name' : 'my_lifted_vcf',
-          'target_vcf_path' : 'my_vcf.vcf.gz',
-          'old_build' : 'hg19',
-          'new_build' : 'hg38'}
+{'project_name' : 'Freeze5_CoreExome_GSA',
+          'target_vcf_path' : '/net/dumbo/home/brettva/freeze5_4_13_2022/remove_aos/genotyped/results/Freeze5_CoreExome_GSA/Freeze5_CoreExome_GSA.vcf.gz',
+          'old_build' : 'hg38',
+          'new_build' : 'hg19'}
