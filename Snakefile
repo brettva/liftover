@@ -48,7 +48,7 @@ rule get_ref:
 
     shell:
         f"""
-        wget https://hgdownload.cse.ucsc.edu/goldenpath/{config['new_build']}/bigZips/{config['new_build']}.fa.gz -P resources
+        wget https://hgdownload.soe.ucsc.edu/goldenpath/{config['new_build']}/bigZips/{config['new_build']}.fa.gz -P resources
         zcat {{params.zipped}} > {{output.ref_path}}
         """
 
